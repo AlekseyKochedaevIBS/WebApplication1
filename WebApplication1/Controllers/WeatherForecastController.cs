@@ -18,16 +18,13 @@ namespace WebApplication1.Controllers
 		{
 			_logger = logger;
 		}
-		/// <summary>
-		/// Get
-		/// </summary>
-		/// <returns></returns>
+
 		[HttpGet(Name = "GetWeatherForecast")]
 		public IEnumerable<WeatherForecast> Get()
 		{
 			PGDao pGDao = new PGDao();
 			var id = pGDao.GetValue();
-			return Enumerable.Range(1, 10).Select(index => new WeatherForecast
+			return Enumerable.Range(1, 5).Select(index => new WeatherForecast
 			{
 				Date = DateTime.Now.AddDays(index),
 				TemperatureC = Random.Shared.Next(-20, 55),
